@@ -1604,9 +1604,10 @@
                 font-size: 1rem;
             }
         }
-		/* Cherian Change  
-        /* Small laptops and tablets landscape (≥ 992px) 
-        @media (min-width: 769px) and (max-width: 991px) {
+		
+        /* Small laptops and tablets landscape (≥ 1030px) */
+        @media (min-width: 769px) and (max-width: 1030px) {
+		/* Cherian Removed  
             .hero-content {
                 grid-template-columns: 1.3fr 0.7fr;
                 gap: 3rem;
@@ -1627,8 +1628,12 @@
             .hero-card {
                 max-width: 550px;
                 padding: 1.5rem 2.5rem;
-            }
-            
+            } 
+
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }  Cherian Removed */
+			
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 3rem;
@@ -1641,11 +1646,8 @@
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .leadership-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        } Cherian Change */
+
+        } 
 
         /* Laptops (≥ 1024px) */
         @media (min-width: 1031px) and (max-width: 1199px) {
