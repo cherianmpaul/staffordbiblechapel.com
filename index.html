@@ -1289,6 +1289,10 @@
         }
 
         .gallery-slide img {
+            cursor: pointer;
+        }
+
+        .gallery-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1333,6 +1337,176 @@
             pointer-events: none;
             z-index: 1;
             border-radius: 0 0 24px 24px;
+        }
+
+        /* Lightbox Modal Styles */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: lightboxFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes lightboxFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            font-weight: 300;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(201, 168, 118, 0.6);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-nav.prev {
+            left: 30px;
+        }
+
+        .lightbox-nav.next {
+            right: 30px;
+        }
+
+        .lightbox-nav:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            z-index: 10001;
+        }
+
+        /* Prevent body scroll when modal is open */
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+        /* Responsive adjustments for lightbox */
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .lightbox-nav.prev {
+                left: 15px;
+            }
+
+            .lightbox-nav.next {
+                right: 15px;
+            }
+
+            .lightbox-counter {
+                bottom: 20px;
+                padding: 10px 20px;
+                font-size: 12px;
+            }
         }
 
         /* Contact Section */
@@ -2886,6 +3060,21 @@
                         <div class="gallery-slide">
                             <img src="Images/group3.jpeg" alt="Stafford Bible Chapel Community - Group 3" loading="lazy">
                         </div>
+                        <div class="gallery-slide">
+                            <img src="Images/group4.jpeg" alt="Stafford Bible Chapel Community - Group 4" loading="lazy">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="Images/group5.jpeg" alt="Stafford Bible Chapel Community - Group 5" loading="lazy">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="Images/group6.jpeg" alt="Stafford Bible Chapel Community - Group 6" loading="lazy">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="Images/group7.jpeg" alt="Stafford Bible Chapel Community - Group 7" loading="lazy">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="Images/Group8.jpeg" alt="Stafford Bible Chapel Community - Group 8" loading="lazy">
+                        </div>
                     </div>
                     <div class="gallery-overlay">
                         <h4>Our Community</h4>
@@ -3095,7 +3284,7 @@
             }
         });
 
-        // Gallery Slideshow - Single card with all three images
+        // Gallery Slideshow - Single card with all group photos
         function initGallerySlideshow() {
             const slideshow = document.querySelector('.gallery-slideshow');
             if (!slideshow) {
@@ -3120,7 +3309,7 @@
                 }
             });
             
-            // Auto-rotate through all three images
+            // Auto-rotate through all group photos
             setInterval(() => {
                 if (slides.length > 0) {
                     slides[currentSlide].classList.remove('active');
@@ -3130,10 +3319,126 @@
             }, 4000); // Change image every 4 seconds
         }
 
+        // Lightbox Modal Functionality
+        function initLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            const modalImage = document.getElementById('lightboxImage');
+            const closeBtn = document.querySelector('.lightbox-close');
+            const prevBtn = document.querySelector('.lightbox-nav.prev');
+            const nextBtn = document.querySelector('.lightbox-nav.next');
+            const counter = document.querySelector('.lightbox-counter');
+            
+            // Get all gallery images
+            const galleryImages = document.querySelectorAll('.gallery-slide img');
+            const images = Array.from(galleryImages).map(img => ({
+                src: img.src,
+                alt: img.alt
+            }));
+            
+            let currentIndex = 0;
+            
+            // Function to open lightbox
+            function openLightbox(index) {
+                currentIndex = index;
+                updateLightboxImage();
+                modal.classList.add('active');
+                document.body.classList.add('lightbox-open');
+            }
+            
+            // Function to close lightbox
+            function closeLightbox() {
+                modal.classList.remove('active');
+                document.body.classList.remove('lightbox-open');
+            }
+            
+            // Function to update lightbox image
+            function updateLightboxImage() {
+                if (images[currentIndex]) {
+                    modalImage.src = images[currentIndex].src;
+                    modalImage.alt = images[currentIndex].alt;
+                    counter.textContent = `${currentIndex + 1} / ${images.length}`;
+                }
+            }
+            
+            // Function to show next image
+            function showNext() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateLightboxImage();
+            }
+            
+            // Function to show previous image
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateLightboxImage();
+            }
+            
+            // Add click event to all gallery slides
+            galleryImages.forEach((img, index) => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openLightbox(index);
+                });
+            });
+            
+            // Close button event
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeLightbox);
+            }
+            
+            // Previous button event
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    showPrev();
+                });
+            }
+            
+            // Next button event
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    showNext();
+                });
+            }
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrev();
+                } else if (e.key === 'ArrowRight') {
+                    showNext();
+                }
+            });
+        }
+
         // Initialize scripts on DOM loaded
         document.addEventListener('DOMContentLoaded', function() {
             initGallerySlideshow();
+            initLightbox();
         });
     </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav prev" aria-label="Previous image">&#8249;</button>
+        <button class="lightbox-nav next" aria-label="Next image">&#8250;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+        </div>
+        <div class="lightbox-counter">1 / 8</div>
+    </div>
 </body>
 </html>
